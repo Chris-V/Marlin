@@ -1,6 +1,9 @@
 # editorconfig.org
 root = true
 
+[Makefile]
+indent_style = tab
+
 [{*.patch,syntax_test_*}]
 trim_trailing_whitespace = false
 

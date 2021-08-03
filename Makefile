@@ -50,3 +50,16 @@ tests-all-local-docker:
 setup-local-docker:
 	docker-compose build
 .PHONY: setup-local-docker
+
+setup-dependencies:
+	python3 -m venv .venv \
+	  && . .venv/bin/activate \
+	  && pip install -U platformio
+.PHONY: setup-dependencies
+
+assemble-binary:
+	cp "Configuration Files"/"Jyers's Config"/Configuration*.h Marlin/ \
+	  && . .venv/bin/activate \
+	  && platformio run \
+	  && git checkout -- "Marlin/Configuration*.h"
+.PHONY: assemble-binary
